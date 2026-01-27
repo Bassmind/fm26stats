@@ -92,7 +92,7 @@ def agregar_mejores_posiciones_potenciales(valores_jugador, jugador_dict):
     #Seleccionar las 3 mejores posiciones
     mejores_posiciones = posiciones_ordenadas[:3]
     
-    jugador_dict['mejores_posiciones_potenciales'] = mejores_posiciones
+    jugador_dict['best_pos_pot'] = mejores_posiciones
 
 
 def agregar_mejores_posiciones_actuales(jugador, jugador_dict):
@@ -103,7 +103,7 @@ def agregar_mejores_posiciones_actuales(jugador, jugador_dict):
     :param jugador_dict: Dict final para agregar la data procesada
     """
 
-    mejores_posiciones = jugador_dict['mejores_posiciones_potenciales']
+    mejores_posiciones = jugador_dict['best_pos_pot']
     mejores_posiciones_actuales = []
 
     for posicion, _ in mejores_posiciones:
@@ -126,4 +126,4 @@ def agregar_mejores_posiciones_actuales(jugador, jugador_dict):
         
         mejores_posiciones_actuales.append((posicion, valor_actual))
     
-    jugador_dict['mejores_posiciones_actuales'] = mejores_posiciones_actuales
+    jugador_dict['best_pos_current'] = mejores_posiciones_actuales
