@@ -16,7 +16,7 @@ def procesar_registro(registro):
         registro (dict): Registro del jugador.
         
     Returns:
-        dict: Diccionario con datos extraídos del jugador.
+        list: Diccionario con datos extraídos del jugador.
     """
     datos_procesados = []
     for jugador in registro:
@@ -26,6 +26,8 @@ def procesar_registro(registro):
         jugador_dict['edad'] = jugador['Age']
         #Extrar mejors posiciones actuales y potenciales y añadir al dict
         extraer_mejores_posiciones(jugador, jugador_dict)
+        
+        datos_procesados.append(jugador_dict)
 
     return datos_procesados
 
