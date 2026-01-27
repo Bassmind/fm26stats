@@ -6,48 +6,10 @@ Responsabilidades:
 - Reconocer las columnas y eliminar las primeras filas que no sirven
 - Regresar un arreglo/mapa con cada fila y su data
 - Permitir activar/desactivar bandera para shortlist o búsqueda de jugadores
-
-ESTRUCTURA DEL ARCHIVO FM GENIE SCOUT INICIAL, (REQUIRED) = Data a extraer:
-* Gen
-* Name (REQUIRED) -> Nombre del jugador
-* Nation
-* Club (REQUIRED) -> Club actual
-* Age (REQUIRED) -> Edad (Aunque puede ser incorrecta)
-* Value -> Valor del jugador
-* Sale Value -> Valor de venta del jugador
-* Best Pot Rating -> Mejor posicion
-* GK - Ball-Playing Goalkeeper - IP (REQUIRED)
-* GK - Ball-Playing Goalkeeper - IP (Pot) (REQUIRED)
-* GK - Sweeper Keeper - OOP (REQUIRED)
-* GK - Sweeper Keeper - OOP (Pot) (REQUIRED)
-* WB - Advanced Wing-Back - IP (REQUIRED)
-* WB - Advanced Wing-Back - IP (Pot) (REQUIRED)
-* D (RL) - Full-Back - OOP (REQUIRED)
-* D (RL) - Full-Back - OOP (Pot) (REQUIRED)
-* D (C) - Ball-Playing Centre-Back - IP (REQUIRED)
-* D (C) - Ball-Playing Centre-Back - IP (Pot) (REQUIRED)
-* D (C) - Overlapping Centre-Back - IP (REQUIRED)
-* D (C) - Overlapping Centre-Back - IP (Pot) (REQUIRED)
-* D (C) - Centre-Back - OOP (REQUIRED)
-* D (C) - Centre-Back - OOP (Pot) (REQUIRED)
-* M (C) - Attacking Midfielder - IP (REQUIRED)
-* M (C) - Attacking Midfielder - IP (Pot) (REQUIRED)
-* DM - Defensive Midfielder - OOP (REQUIRED)
-* DM - Defensive Midfielder - OOP (Pot) (REQUIRED)
-* AM (RL) - Inside Winger - IP (REQUIRED)
-* AM (RL) - Inside Winger - IP (Pot) (REQUIRED)
-* AM (RL) - Inside Forward - IP (REQUIRED)
-* AM (RL) - Inside Forward - IP (Pot) (REQUIRED)
-* AM (RL) - Winger - OOP (REQUIRED)
-* AM (RL) - Winger - OOP (Pot) (REQUIRED)
-* AM (C) - Second Striker - IP (REQUIRED)
-* AM (C) - Second Striker - IP (Pot) (REQUIRED)
-* AM (C) - Attacking Midfielder - OOP (REQUIRED)
-* AM (C) - Attacking Midfielder - OOP (Pot) (REQUIRED)
 """
 
 import csv
-from ..config import RUTA_DATOS_PREDETERMINADA
+from ..config import RUTA_DATOS_PREDETERMINADA, HEADERS
 
 def cargar_extraccion_archivo(ruta_archivo=None):
     """
@@ -66,24 +28,17 @@ def cargar_extraccion_archivo(ruta_archivo=None):
     data = []
 
     with open(ruta_archivo or RUTA_DATOS_PREDETERMINADA, mode='r', newline='', encoding='ANSI') as file:
-        lector = csv.reader(file)
+        file_text = file.read()
 
-        try:
-            #Skipping first line
-            next(lector)
-        except StopIteration:
-            print("[ERROR] El archivo está vacío o no tiene suficientes líneas.")
-            return []
-        
-        for row in lector:
-            data.append(row)
+        array_file = file_text.splitlines()
+        data = procesar_file_info(array_file) #Recibimos una list con dicts con solo los datos necesarios 
 
     print(data)
 
     return data
 
 
-def reconocer_columnas(datos_raw):
+def procesar_file_info(datos_raw):
     """
     Reconoce las columnas del archivo y limpia las filas innecesarias.
     
@@ -93,7 +48,16 @@ def reconocer_columnas(datos_raw):
     Returns:
         tuple: (columnas, datos_limpios)
     """
-    pass
+    data = []
+    
+    datos_raw.pop(0)  # Elimina la primera fila de encabezados extra
+
+    for item in datos_raw:
+        item_list = item.split(';')
+        dict_elem = procesar_datos(item_list)
+        data.append(dict_elem)
+
+    return data
 
 
 def procesar_datos(datos_raw):
@@ -101,9 +65,19 @@ def procesar_datos(datos_raw):
     Procesa los datos crudos del archivo.
     
     Args:
-        datos_raw (list): Datos crudos del archivo.
+        datos_raw (list): Una linea de datos del archivo.
         
     Returns:
         list: Lista de diccionarios con datos procesados.
     """
-    pass
+
+    datos_procesados = dict(zip(HEADERS, datos_raw)) #Crea dict basado en HEADERS y la fila del archivo
+    
+    # Elimina datos no necesarios del dict
+    del datos_procesados["Gen"]
+    del datos_procesados["Nation"]
+    del datos_procesados["Value"]
+    del datos_procesados["Sale Value"]
+    del datos_procesados["Best Pot Rating"]
+
+    return datos_procesados
