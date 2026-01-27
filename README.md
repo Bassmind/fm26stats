@@ -15,10 +15,10 @@ Al abrir, ejecutar un menu para hacer alguna de las siguientes opciones:
 
 (2)Analizar talentos
 - Definir variables iniciales para cada posiciones, para filtros.
-- Definir atributos ocultos
+- Definir atributos ocultos (CANCELADO - No vienen en archivo)
 - Llamar a Modulo de carga de archivos
 - Llamar a Modulo de Extraccion de Data
-- Filtrar data por posiciones/minimos, y por atributos ocultos
+- Filtrar data por posiciones/minimos  (CANCELADO: "por atributos ocultos")
 - Llamar a Modulo de Display Data
 
 ===========================
@@ -37,8 +37,8 @@ Modulo de Extraccion de Data:
 ===========================
 - Por cada fila de data, extraer:
     * Nombre
-    * CA y PA
-    * Atributos Ocultos
+    * CA y PA (CANCELADO - No vienen en archivo)
+    * Atributos Ocultos (CANCELADO - No vienen en archivo)
     * Mejores 3 posiciones, con C,P, para IP y OOP
 
 ===========================
@@ -46,6 +46,6 @@ Modulo de Extraccion de Data:
 ===========================
 - Mostrar cada fila con su info:
     * Nombre
-    * CA y PA
-    * Atributos Ocultos
+    * CA y PA (CANCELADO - No vienen en archivo)
+    * Atributos Ocultos (CANCELADO - No vienen en archivo)
     * Mejores 3 posiciones, con C,P, para IP y OOP
