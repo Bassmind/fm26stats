@@ -30,9 +30,7 @@ def cargar_archivo(ruta_archivo=None):
         file_text = file.read()
 
         array_file = file_text.splitlines()
-        data = procesar_file_info(array_file) #Recibimos una list con dicts con solo los datos necesarios 
-
-    print(data)
+        data = procesar_file_info(array_file) #Recibimos una list con dicts con solo los datos necesarios
 
     return data
 

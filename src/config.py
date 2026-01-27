@@ -9,12 +9,16 @@ RUTA_DATOS_PREDETERMINADA = "C:\\Users\\david\\Downloads\\testfm.csv"
 RUTA_EXPORTACION = "data/resultados/"
 
 # Posiciones disponibles en FM26
-POSICIONES_DISPONIBLES = [
-    "POR",  # Portero
-    "DEF",  # Defensa
-    "MC",   # Mediocampista
-    "DEL",  # Delantero
-]
+POSICIONES = {
+    "GK": "GK",
+    "FB": "FB",
+    "DFCo": "DFCo",
+    "DFCi": "DFCi",
+    "DM": "DM",
+    "MPd": "MPd",
+    "MPi": "MPi",
+    "MPc": "MPc",
+}
 
 # Modo de búsqueda
 MODO_SHORTLIST = True  # True = shortlist del equipo, False = búsqueda de jugadores
@@ -98,3 +102,43 @@ HEADERS = [
     "AM (C) - Attacking Midfielder - OOP (Pot)",
     # Agregar más según sea necesario
 ]
+
+HEADERS_DICT = {
+    "Gen": "Gen",
+    "Name": "Name",
+    "Nation": "Nation",
+    "Club": "Club",
+    "Age": "Age",
+    "Value": "Value",
+    "SaleValue": "Sale Value",
+    "BestPotRating": "Best Pot Rating",
+    "GK-IP-C": "GK - Ball-Playing Goalkeeper - IP",
+    "GK-IP-P": "GK - Ball-Playing Goalkeeper - IP (Pot)",
+    "GK-OOP-C": "GK - Sweeper Keeper - OOP",
+    "GK-OOP-P": "GK - Sweeper Keeper - OOP (Pot)",
+    "FB-IP-C": "WB - Advanced Wing-Back - IP",
+    "FB-IP-P": "WB - Advanced Wing-Back - IP (Pot)",
+    "FB-OOP-C": "D (RL) - Full-Back - OOP",
+    "FB-OOP-P": "D (RL) - Full-Back - OOP (Pot)",
+    "DFCo-IP-C": "D (C) - Overlapping Centre-Back - IP",
+    "DFCo-IP-P": "D (C) - Overlapping Centre-Back - IP (Pot)",
+    "DFCi-IP-C": "D (C) - Ball-Playing Centre-Back - IP",
+    "DFCi-IP-P": "D (C) - Ball-Playing Centre-Back - IP (Pot)",
+    "DFC-OOP-C": "D (C) - Centre-Back - OOP",
+    "DFC-OOP-P": "D (C) - Centre-Back - OOP (Pot)",
+    "DM-IP-C": "M (C) - Attacking Midfielder - IP",
+    "DM-IP-P": "M (C) - Attacking Midfielder - IP (Pot)",
+    "DM-OOP-C": "DM - Defensive Midfielder - OOP",
+    "DM-OOP-P": "DM - Defensive Midfielder - OOP (Pot)",
+    "MPd-IP-C": "AM (RL) - Inside Winger - IP",
+    "MPd-IP-P": "AM (RL) - Inside Winger - IP (Pot)",
+    "MPi-IP-C": "AM (RL) - Inside Forward - IP",
+    "MPi-IP-P": "AM (RL) - Inside Forward - IP (Pot)",
+    "MP(RL)-OOP-C": "AM (RL) - Winger - OOP",
+    "MP(RL)-OOP-P": "AM (RL) - Winger - OOP (Pot)",
+    "MPc-IP-C": "AM (C) - Second Striker - IP",
+    "MPc-IP-P": "AM (C) - Second Striker - IP (Pot)",
+    "MPc-OOP-C": "AM (C) - Attacking Midfielder - OOP",
+    "MPc-OOP-P": "AM (C) - Attacking Midfielder - OOP (Pot)",
+    # Agregar más según sea necesario
+}

@@ -32,9 +32,13 @@ def analizar_equipo_propio():
     Ejecuta el flujo para analizar el equipo propio.
     """
     print("\n[Analizando equipo propio...]")
-    # 1. Cargar archivos y extraer datos
+    # 1. Cargar archivos
     datos = cargar_archivo()
-    # 2. Display de datos/crear archivo
+    
+    # 2. Procesar datos
+    jugadores_procesados = procesar_registro(datos)
+
+    # 3. Display de datos/crear archivo
     pass
 
 
