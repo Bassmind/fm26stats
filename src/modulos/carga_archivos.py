@@ -3,9 +3,8 @@ Módulo de Carga de Archivos
 ============================
 Responsabilidades:
 - Leer data de archivo (desde nombre predeterminado o abrir archivo)
-- Reconocer las columnas y eliminar las primeras filas que no sirven
-- Regresar un arreglo/mapa con cada fila y su data
-- Permitir activar/desactivar bandera para shortlist o búsqueda de jugadores
+- Reconocer las columnas y eliminar las primera filas que no sirve
+- Regresar una lista de diccionarios con los datos necesarios
 """
 
 import csv
@@ -46,7 +45,7 @@ def procesar_file_info(datos_raw):
         datos_raw (list): Datos crudos del archivo.
         
     Returns:
-        tuple: (columnas, datos_limpios)
+        list: Lista con los diccionarios de datos procesados.
     """
     data = []
     
@@ -68,7 +67,7 @@ def procesar_datos(datos_raw):
         datos_raw (list): Una linea de datos del archivo.
         
     Returns:
-        list: Lista de diccionarios con datos procesados.
+        dict: Diccionario con los datos deseados.
     """
 
     datos_procesados = dict(zip(HEADERS, datos_raw)) #Crea dict basado en HEADERS y la fila del archivo
