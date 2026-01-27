@@ -11,7 +11,7 @@ Responsabilidades:
 import csv
 from ..config import RUTA_DATOS_PREDETERMINADA, HEADERS
 
-def cargar_extraccion_archivo(ruta_archivo=None):
+def cargar_archivo(ruta_archivo=None):
     """
     Carga un archivo exportado desde FM Genie Scout y se extrae la data
     

@@ -8,7 +8,7 @@ Responsabilidades:
 """
 
 import sys
-from .carga_archivos import cargar_extraccion_archivo, procesar_datos
+from .carga_archivos import cargar_archivo, procesar_datos
 from .extraccion_datos import procesar_registro
 from .display_datos import mostrar_tabla_jugadores
 
@@ -33,7 +33,7 @@ def analizar_equipo_propio():
     """
     print("\n[Analizando equipo propio...]")
     # 1. Cargar archivos y extraer datos
-    datos = cargar_extraccion_archivo()
+    datos = cargar_archivo()
     # 2. Display de datos/crear archivo
     pass
 
