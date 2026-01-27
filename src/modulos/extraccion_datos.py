@@ -127,3 +127,56 @@ def agregar_mejores_posiciones_actuales(jugador, jugador_dict):
         mejores_posiciones_actuales.append((posicion, valor_actual))
     
     jugador_dict['best_pos_current'] = mejores_posiciones_actuales
+
+
+def filtrar_jugadores(jugadores, posiciones_deseadas):
+    """
+    Funcion para remover cualquier jugador que no pase del umbral minimo
+    
+    :param jugadores: Lista de jugadores procesados del CSV con sus mejores posiciones
+    :param posiciones_deseadas: Valores minimos por posicion
+    """
+    # Convertir la entrada de posiciones en una lista
+    posiciones_lista = [pos.strip() for pos in posiciones_deseadas.split(",")]
+
+    # Crear mapa de posiciones con su valor minimo
+    posiciones_minimas_valores = {
+        POSICIONES['GK']: posiciones_lista[0],
+        POSICIONES['FB']: posiciones_lista[1],
+        POSICIONES['DFCo']: posiciones_lista[2],
+        POSICIONES['DFCi']: posiciones_lista[3],
+        POSICIONES['DM']: posiciones_lista[4],
+        POSICIONES['MPd']: posiciones_lista[5],
+        POSICIONES['MPi']: posiciones_lista[6],
+        POSICIONES['MPc']: posiciones_lista[7],
+    }
+
+    jugadores_filtrados = []
+
+    for jugador in jugadores:
+        tuplas_aprobadas = []
+        
+        # Revisar cada tupla de las mejores posiciones para ver si alguna pasa el filtro
+        for pos, val in jugador['best_pos_pot']:
+            if pos in posiciones_minimas_valores:
+                valor_minimo = float(posiciones_minimas_valores[pos]) #Valor minimo para esa posicion
+
+                #Si pasa el filtro, agregar a la lista de aprobados
+                if val >= valor_minimo:
+                    tuplas_aprobadas.append((pos, val))
+
+        #Si alguna posicion paso el filtro, agregar el jugador a la lista final
+        if tuplas_aprobadas:
+            jugador['best_pos_pot'] = tuplas_aprobadas
+
+            #Remover tuplas actuales si no estan en las aprobadas
+            tuplas_actuales_aprobadas = []
+            for pos, val in jugador['best_pos_current']:
+                for pos_aprobada, _ in tuplas_aprobadas:
+                    if pos == pos_aprobada:
+                        tuplas_actuales_aprobadas.append((pos, val))
+
+            jugador['best_pos_current'] = tuplas_actuales_aprobadas
+            jugadores_filtrados.append(jugador)
+    
+    return jugadores_filtrados

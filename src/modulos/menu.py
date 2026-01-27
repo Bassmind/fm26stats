@@ -8,8 +8,8 @@ Responsabilidades:
 """
 
 import sys
-from .carga_archivos import cargar_archivo, procesar_datos
-from .extraccion_datos import procesar_registro
+from .carga_archivos import cargar_archivo
+from .extraccion_datos import procesar_registro, filtrar_jugadores
 from .display_datos import persistir_info
 
 
@@ -62,11 +62,20 @@ def analizar_talentos():
           - MPc
           """)
     valores_entrada = input("Posiciones: ").strip()
-    print("Check:" + valores_entrada)
 
-    # cargar_extraccion_archivo()
-    # filtrar_data()
+    # 1. Cargar archivos
+    datos = cargar_archivo()
+    
+    # 2. Procesar datos
+    jugadores_procesados = procesar_registro(datos)
+
+    # 3. Filtrar jugadores
+    jugadores_filtrados = filtrar_jugadores(jugadores_procesados, valores_entrada)
+
     # Display de datos/crear archivo
+    persistir_info(jugadores_filtrados)
+
+    print("=====================\nAnálisis de talentos completado.\n")
 
     sys.exit(0)
 
