@@ -46,6 +46,9 @@ ESTRUCTURA DEL ARCHIVO FM GENIE SCOUT INICIAL, (REQUIRED) = Data a extraer:
 * AM (C) - Attacking Midfielder - OOP (Pot) (REQUIRED)
 """
 
+import csv
+from ..config import RUTA_DATOS_PREDETERMINADA
+
 def cargar_extraccion_archivo(ruta_archivo=None):
     """
     Carga un archivo exportado desde FM Genie Scout y se extrae la data
@@ -56,7 +59,28 @@ def cargar_extraccion_archivo(ruta_archivo=None):
     Returns:
         list: Lista de diccionarios con los datos de los jugadores.
     """
-    pass
+
+    print("Comienza extracción de datos desde archivo...")
+    print("=============================================")
+
+    data = []
+
+    with open(ruta_archivo or RUTA_DATOS_PREDETERMINADA, mode='r', newline='', encoding='ANSI') as file:
+        lector = csv.reader(file)
+
+        try:
+            #Skipping first line
+            next(lector)
+        except StopIteration:
+            print("[ERROR] El archivo está vacío o no tiene suficientes líneas.")
+            return []
+        
+        for row in lector:
+            data.append(row)
+
+    print(data)
+
+    return data
 
 
 def reconocer_columnas(datos_raw):
