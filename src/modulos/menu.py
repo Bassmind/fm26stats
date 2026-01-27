@@ -8,7 +8,7 @@ Responsabilidades:
 """
 
 import sys
-from .carga_archivos import cargar_archivo, procesar_datos
+from .carga_archivos import cargar_extraccion_archivo, procesar_datos
 from .extraccion_datos import procesar_registro
 from .display_datos import mostrar_tabla_jugadores
 
@@ -32,10 +32,9 @@ def analizar_equipo_propio():
     Ejecuta el flujo para analizar el equipo propio.
     """
     print("\n[Analizando equipo propio...]")
-    # 1. Cargar archivos
-    datos = cargar_archivo()
-    # 2. Extracción de datos
-    # 3. Display de datos
+    # 1. Cargar archivos y extraer datos
+    datos = cargar_extraccion_archivo()
+    # 2. Display de datos/crear archivo
     pass
 
 
@@ -57,10 +56,9 @@ def analizar_talentos():
     valores_entrada = input("Posiciones: ").strip()
     print("Check:" + valores_entrada)
 
-    # cargar_archivo()
-    # extraer_datos()
+    # cargar_extraccion_archivo()
     # filtrar_data()
-    # mostrar tabla / exportar archivo
+    # Display de datos/crear archivo
 
     sys.exit(0)
     pass
