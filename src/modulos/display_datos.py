@@ -2,38 +2,23 @@
 Módulo de Display de Datos
 ===========================
 Responsabilidades:
-- Mostrar cada fila con su información:
-  * Nombre
-  * CA y PA
-  * Atributos Ocultos
-  * Mejores 3 posiciones, con C,P, para IP y OOP
+- Guardar la data en archivo de texto
 """
+from ..config import RUTA_EXPORTACION
 
-def mostrar_jugador(datos_jugador):
+def persistir_info(data):
     """
-    Muestra la información de un jugador en formato legible.
+    Guarda la información procesada en un archivo de texto.
     
     Args:
-        datos_jugador (dict): Diccionario con datos del jugador.
+        data (list): Lista de diccionarios con los datos procesados.
     """
-    pass
-
-
-def mostrar_tabla_jugadores(datos_jugadores):
-    """
-    Muestra una tabla con la información de múltiples jugadores.
     
-    Args:
-        datos_jugadores (list): Lista de diccionarios con datos de jugadores.
-    """
-    pass
-
-
-def mostrar_posiciones(mejores_posiciones):
-    """
-    Muestra las mejores posiciones de un jugador en formato legible.
+    print(f"Guardando datos procesados en {RUTA_EXPORTACION}...")
     
-    Args:
-        mejores_posiciones (list): Lista de posiciones con sus valores.
-    """
-    pass
+    with open(RUTA_EXPORTACION, mode='w', encoding='ansi') as file:
+        for jugador in data:
+            linea = ', '.join([f"{clave}: {valor}" for clave, valor in jugador.items()])
+            file.write(linea + '\n')
+    
+    print("Datos guardados exitosamente.")

@@ -10,7 +10,7 @@ Responsabilidades:
 import sys
 from .carga_archivos import cargar_archivo, procesar_datos
 from .extraccion_datos import procesar_registro
-from .display_datos import mostrar_tabla_jugadores
+from .display_datos import persistir_info
 
 
 def mostrar_menu_principal():
@@ -31,7 +31,7 @@ def analizar_equipo_propio():
     """
     Ejecuta el flujo para analizar el equipo propio.
     """
-    print("\n[Analizando equipo propio...]")
+    print("\n[Analizando equipo propio...]\n=====================")
     # 1. Cargar archivos
     datos = cargar_archivo()
     
@@ -39,7 +39,11 @@ def analizar_equipo_propio():
     jugadores_procesados = procesar_registro(datos)
 
     # 3. Display de datos/crear archivo
-    pass
+    persistir_info(jugadores_procesados)
+
+    print("=====================\nAnálisis de equipo propio completado.\n")
+
+    sys.exit(0)
 
 
 def analizar_talentos():
@@ -65,7 +69,6 @@ def analizar_talentos():
     # Display de datos/crear archivo
 
     sys.exit(0)
-    pass
 
 
 def menu_principal():

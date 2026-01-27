@@ -6,7 +6,7 @@ Variables de configuración globales del proyecto.
 
 # Rutas predeterminadas
 RUTA_DATOS_PREDETERMINADA = "C:\\Users\\david\\Downloads\\testfm.csv"
-RUTA_EXPORTACION = "data/resultados/"
+RUTA_EXPORTACION = "C:\\Users\\david\\Downloads\\testfm_results.txt"
 
 # Posiciones disponibles en FM26
 POSICIONES = {
