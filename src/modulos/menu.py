@@ -7,6 +7,7 @@ Responsabilidades:
 - Dirigir el flujo del programa
 """
 
+import sys
 from .carga_archivos import cargar_archivo, procesar_datos
 from .extraccion_datos import procesar_registro
 from .display_datos import mostrar_tabla_jugadores
@@ -40,15 +41,28 @@ def analizar_equipo_propio():
 
 def analizar_talentos():
     """
-    Ejecuta el flujo para analizar talentos.
+    Flujo para analizar talentos de otros equipos, y definir variables iniciales para posiciones.
     """
-    print("\n[Analizando talentos...]")
-    # 1. Definir variables iniciales para posiciones
-    # 2. Definir atributos ocultos
-    # 3. Cargar archivos
-    # 4. Extracción de datos
-    # 5. Filtrar data
-    # 6. Display de datos
+    print("\nAnalizando talentos de otros equipos...")
+    print("""Ingresa las posiciones a analizar (separadas por comas):
+          - GK
+          - FB(RL)
+          - DFCo
+          - DFCi
+          - DM
+          - MPd
+          - MPi
+          - MPc
+          """)
+    valores_entrada = input("Posiciones: ").strip()
+    print("Check:" + valores_entrada)
+
+    # cargar_archivo()
+    # extraer_datos()
+    # filtrar_data()
+    # mostrar tabla / exportar archivo
+
+    sys.exit(0)
     pass
 
 
