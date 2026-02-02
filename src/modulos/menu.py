@@ -42,13 +42,17 @@ def analizar_equipo_propio():
     persistir_info(jugadores_procesados)
 
     # 4. Actualizar Excel
-    # Preguntar si desea actualizar el archivo Excel
-    respuesta = input("¿Deseas actualizar el archivo Excel con los datos procesados? (s/n): ").strip().lower()
+    # Preguntar si desea actualizar el archivo Excel, con warning
+    respuesta = input("¿Actualizaste las columnas de GenieScout? (s/n): ").strip().lower()
     if respuesta == 's':
-        from .excel import actualizar_excel
-        actualizar_excel(jugadores_procesados)
+        respuesta = input("¿Deseas actualizar el archivo Excel con los datos procesados? (s/n): ").strip().lower()
+        if respuesta == 's':
+            from .excel import actualizar_excel
+            actualizar_excel(jugadores_procesados)
 
     print("=====================\nAnálisis de equipo propio completado.\n")
+
+    
 
     sys.exit(0)
 
