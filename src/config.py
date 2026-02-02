@@ -6,7 +6,7 @@ Variables de configuración globales del proyecto.
 
 # Rutas predeterminadas
 RUTA_DATOS_PREDETERMINADA = "C:\\Users\\david\\Downloads\\testfm.csv"
-RUTA_EXCEL_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\FM-JovenesT.xlsx"
+RUTA_EXCEL_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\FM-Jovenes.xlsx"
 RUTA_EXPORTACION = "C:\\Users\\david\\Downloads\\testfm_results.txt"
 
 # Posiciones disponibles en FM26
@@ -20,9 +20,6 @@ POSICIONES = {
     "MPi": "MPi",
     "MPc": "MPc",
 }
-
-# Modo de búsqueda
-MODO_SHORTLIST = True  # True = shortlist del equipo, False = búsqueda de jugadores
 
 """
 ESTRUCTURA DEL ARCHIVO FM GENIE SCOUT INICIAL, (REQUIRED) = Data a extraer:
