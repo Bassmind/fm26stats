@@ -11,6 +11,7 @@ import sys
 from .carga_archivos import cargar_archivo
 from .extraccion_datos import procesar_registro, filtrar_jugadores
 from .display_datos import persistir_info
+from .text_file import actualizar_text_file
 
 
 def mostrar_menu_principal():
@@ -52,7 +53,8 @@ def analizar_equipo_propio():
 
     print("=====================\nAnálisis de equipo propio completado.\n")
 
-    
+    # 5. Actualizar Archivo de texto con valores
+    actualizar_text_file(jugadores_procesados)
 
     sys.exit(0)
 
