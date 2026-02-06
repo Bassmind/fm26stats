@@ -43,7 +43,7 @@ def actualizar_text_file(jugadores_procesados):
                             
                             new_file.write(line)
                         else:
-
+                            log.info(f"Procesando línea para actualización: {line.strip()}")
                             line_to_print = get_correct_line(line, rol_jugador, jugadores_dict)
                             new_file.write(line_to_print)
                     else:
@@ -137,6 +137,7 @@ def get_correct_line(line, rol_jugador, jugadores_dict):
     ca_for_player = None
     pa_for_player = None
 
+    log.info(f"Buscando datos para jugador: '{jugador_en_archivo}' con rol '{rol_jugador}'")
     if jugador_en_archivo in jugadores_dict:
         ca_dict = jugadores_dict[jugador_en_archivo]['CA']
         pa_dict = jugadores_dict[jugador_en_archivo]['PA']
@@ -150,7 +151,10 @@ def get_correct_line(line, rol_jugador, jugadores_dict):
             if rol_jugador in item:
                 pa_for_player = item[1]
                 break
+        
+        log.info(f"Datos nuevos encontrados en GenieScout file para '{jugador_en_archivo}': CA={ca_for_player}, PA={pa_for_player}")
     else:
+        log.warning(f"No se encontró el jugador '{jugador_en_archivo}' en los datos procesados.")
         print(f"ADVERTENCIA: No se encontró el jugador '{jugador_en_archivo}' en los datos procesados.")
     
     #Crear la string a retornar basado en formato
