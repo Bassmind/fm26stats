@@ -10,6 +10,7 @@ RUTA_EXCEL_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\FM-Jovenes.xlsx"
 RUTA_EXPORTACION = "C:\\Users\\david\\Downloads\\testfm_results.txt"
 RUTA_TEXT_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\F13.txt"
 RUTA_TEXT_FILE_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F13_bak.txt"
+RUTA_LOGGER = "C:\\Users\\david\\Downloads\\fm13_log.log"
 
 # Posiciones disponibles en FM26
 POSICIONES = {

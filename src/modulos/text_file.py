@@ -3,11 +3,16 @@ Modulo para actualizar el archivo de texto FM13.txt con los valores actuales de 
 """
 
 from src.config import RUTA_TEXT_FILE, RUTA_TEXT_FILE_BAK
+from .util import obtener_logger
 import os
+
+log = obtener_logger(__name__)
 
 def actualizar_text_file(jugadores_procesados):
     """Actualiza el archivo de texto con los parámetros dados."""
     #Rename existing file as backup
+    log.info("Iniciando proceso de actualización del archivo de texto.")
+
     if os.path.exists(RUTA_TEXT_FILE):
         os.rename(RUTA_TEXT_FILE, RUTA_TEXT_FILE_BAK)
 
@@ -38,6 +43,7 @@ def actualizar_text_file(jugadores_procesados):
                             
                             new_file.write(line)
                         else:
+
                             line_to_print = get_correct_line(line, rol_jugador, jugadores_dict)
                             new_file.write(line_to_print)
                     else:
