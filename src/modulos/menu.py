@@ -44,7 +44,7 @@ def analizar_equipo_propio():
 
     # 4. Actualizar Excel
     # Preguntar si desea actualizar el archivo Excel, con warning
-    respuesta = input("¿Actualizaste las columnas de GenieScout, eliminaste F13_bak, backupeaste, preparaste nuevos jugadores y agregaste 0's a columnnas (s/n): ").strip().lower()
+    respuesta = input("¿Actualizaste las columnas de GenieScout, eliminaste F13_bak, backupeaste, cerraste archivos, preparaste nuevos jugadores y agregaste 0's a columnnas (s/n): ").strip().lower()
     if respuesta == 's':
         respuesta = input("¿Deseas actualizar el archivo Excel con los datos procesados? (s/n): ").strip().lower()
         if respuesta == 's':
