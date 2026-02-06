@@ -49,7 +49,7 @@ def analizar_equipo_propio():
         respuesta = input("¿Deseas actualizar el archivo Excel con los datos procesados? (s/n): ").strip().lower()
         if respuesta == 's':
             from .excel import actualizar_excel
-            #actualizar_excel(jugadores_procesados)
+            actualizar_excel(jugadores_procesados)
 
             # 5. Actualizar Archivo de texto con valores
             actualizar_text_file(jugadores_procesados)
