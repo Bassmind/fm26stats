@@ -8,9 +8,17 @@ Variables de configuración globales del proyecto.
 RUTA_DATOS_PREDETERMINADA = "C:\\Users\\david\\Downloads\\testfm.csv"
 RUTA_EXCEL_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\FM-Jovenes.xlsx"
 RUTA_EXPORTACION = "C:\\Users\\david\\Downloads\\testfm_results.txt"
-RUTA_TEXT_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\F13.txt"
-RUTA_TEXT_FILE_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F13_bak.txt"
-RUTA_LOGGER = "C:\\Users\\david\\Downloads\\fm13_log.log"
+#RUTA_TEXT_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\F13.txt"
+#RUTA_TEXT_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\F14.txt"
+RUTA_TEXT_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\F15.txt"
+RUTA_TEXT_FILE_FM17 = "C:\\Users\\david\\OneDrive\\Documentos\\F16.txt"
+#RUTA_TEXT_FILE_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F13_bak.txt"
+#RUTA_TEXT_FILE_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F14_bak.txt"
+RUTA_TEXT_FILE_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F15_bak.txt"
+RUTA_TEXT_FILE_FM17_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F16_bak.txt"
+#RUTA_LOGGER = "C:\\Users\\david\\Downloads\\fm13_log.log"
+#RUTA_LOGGER = "C:\\Users\\david\\Downloads\\fm14_log.log"
+RUTA_LOGGER = "C:\\Users\\david\\Downloads\\fm15_log.log"
 
 # Posiciones disponibles en FM26
 POSICIONES = {
