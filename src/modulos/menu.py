@@ -13,13 +13,25 @@ from .extraccion_datos import procesar_registro, filtrar_jugadores
 from .display_datos import persistir_info
 from .text_file import actualizar_text_file
 
+def elgir_juego():
+    """
+    Muestra el menú para elegir juego.
+    """
+    print("\n" + "="*50)
+    print("FM26 STATS - Analizador de Datos de GenieScout")
+    print("="*50)
+    print("\nQue juego quieres analizar:")
+    print("(1) FM26")
+    print("(2) FM17")
+    print("(0) Salir")
+    print("-"*50)
 
 def mostrar_menu_principal():
     """
     Muestra el menú principal del programa.
     """
     print("\n" + "="*50)
-    print("FM26 STATS - Analizador de Datos de GenieScout")
+    print("FM17/26 STATS - Analizador de Datos de GenieScout")
     print("="*50)
     print("\nSelecciona una opción:")
     print("(1) Analizar equipo propio")
@@ -59,6 +71,12 @@ def analizar_equipo_propio():
     sys.exit(0)
 
 
+def analizar_fm17():
+    """
+    Menu para FM17
+    """
+    
+
 def analizar_talentos():
     """
     Flujo para analizar talentos de otros equipos, y definir variables iniciales para posiciones.
@@ -93,19 +111,52 @@ def analizar_talentos():
     sys.exit(0)
 
 
+def analizar_talentos_fm17():
+    """
+    Analizar Talentos para FM17
+    """
+
 def menu_principal():
     """
     Ejecuta el bucle principal del programa.
     """
     while True:
-        mostrar_menu_principal()
-        opcion = input("Ingresa tu opción: ").strip()
+        elgir_juego()
+        opcion_juego = input("Juego a elegir: ").strip()
         
-        if opcion == "1":
-            analizar_equipo_propio()
-        elif opcion == "2":
-            analizar_talentos()
-        elif opcion == "0":
+        if opcion_juego == "1":
+            while True:
+                mostrar_menu_principal()
+                opcion = input("Ingresa tu opción: ").strip()
+                
+                if opcion == "1":
+                    analizar_equipo_propio()
+                elif opcion == "2":
+                    analizar_talentos()
+                elif opcion == "0":
+                    print("\n¡Hasta luego!")
+                    sys.exit(0)
+                    break
+                else:
+                    print("\n[ERROR] Opción no válida. Intenta de nuevo.")
+        elif opcion_juego == "2":
+            while True:
+                mostrar_menu_principal()
+                opcion = input("Ingresa tu opción: ").strip()
+                
+                if opcion == "1":
+                    analizar_fm17()
+                elif opcion == "2":
+                    analizar_talentos_fm17()
+                elif opcion == "0":
+                    print("\n¡Hasta luego!")
+                    sys.exit(0)
+                    break
+                else:
+                    print("\n[ERROR] Opción no válida. Intenta de nuevo.")
+            
+            
+        elif opcion_juego == "0":
             print("\n¡Hasta luego!")
             break
         else:
