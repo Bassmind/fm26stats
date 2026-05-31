@@ -10,15 +10,15 @@ RUTA_EXCEL_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\FM-Jovenes.xlsx"
 RUTA_EXPORTACION = "C:\\Users\\david\\Downloads\\testfm_results.txt"
 #RUTA_TEXT_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\F13.txt"
 #RUTA_TEXT_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\F14.txt"
-RUTA_TEXT_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\F15.txt"
+RUTA_TEXT_FILE = "C:\\Users\\david\\OneDrive\\Documentos\\F18.txt"
 RUTA_TEXT_FILE_FM17 = "C:\\Users\\david\\OneDrive\\Documentos\\F16.txt"
 #RUTA_TEXT_FILE_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F13_bak.txt"
 #RUTA_TEXT_FILE_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F14_bak.txt"
-RUTA_TEXT_FILE_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F15_bak.txt"
+RUTA_TEXT_FILE_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F18_bak.txt"
 RUTA_TEXT_FILE_FM17_BAK = "C:\\Users\\david\\OneDrive\\Documentos\\F16_bak.txt"
 #RUTA_LOGGER = "C:\\Users\\david\\Downloads\\fm13_log.log"
 #RUTA_LOGGER = "C:\\Users\\david\\Downloads\\fm14_log.log"
-RUTA_LOGGER = "C:\\Users\\david\\Downloads\\fm15_log.log"
+RUTA_LOGGER = "C:\\Users\\david\\Downloads\\fm18_log.log"
 
 # Posiciones disponibles en FM26
 POSICIONES = {
@@ -83,8 +83,10 @@ HEADERS = [
     "Best Pot Rating",
     "GK - Ball-Playing Goalkeeper - IP",
     "GK - Ball-Playing Goalkeeper - IP (Pot)",
-    "GK - Sweeper Keeper - OOP",
-    "GK - Sweeper Keeper - OOP (Pot)",
+    "GK - Goalkeeper - OOP",
+    "GK - Goalkeeper - OOP (Pot)",
+    #"GK - Sweeper Keeper - OOP",##Cambio?
+    #"GK - Sweeper Keeper - OOP (Pot)",##Cambio?
     "WB - Advanced Wing-Back - IP",
     "WB - Advanced Wing-Back - IP (Pot)",
     "D (RL) - Full-Back - OOP",
@@ -95,12 +97,14 @@ HEADERS = [
     "D (C) - Ball-Playing Centre-Back - IP (Pot)",
     "D (C) - Centre-Back - OOP",
     "D (C) - Centre-Back - OOP (Pot)",
-    "M (C) - Attacking Midfielder - IP",
-    "M (C) - Attacking Midfielder - IP (Pot)",
+    #"M (C) - Attacking Midfielder - IP",##Cambio?
+    #"M (C) - Attacking Midfielder - IP (Pot)",##Cambio?
+    "M (C) - Channel Midfielder - IP",
+    "M (C) - Channel Midfielder - IP (Pot)",
     "DM - Defensive Midfielder - OOP",
     "DM - Defensive Midfielder - OOP (Pot)",
-    "AM (RL) - Inside Winger - IP",
-    "AM (RL) - Inside Winger - IP (Pot)",
+    #"AM (RL) - Inside Winger - IP",##Cambio?
+    #"AM (RL) - Inside Winger - IP (Pot)",##Cambio?
     "AM (RL) - Inside Forward - IP",
     "AM (RL) - Inside Forward - IP (Pot)",
     "AM (RL) - Winger - OOP",
@@ -123,8 +127,8 @@ HEADERS_DICT = {
     "BestPotRating": "Best Pot Rating",
     "GK-IP-C": "GK - Ball-Playing Goalkeeper - IP",
     "GK-IP-P": "GK - Ball-Playing Goalkeeper - IP (Pot)",
-    "GK-OOP-C": "GK - Sweeper Keeper - OOP",
-    "GK-OOP-P": "GK - Sweeper Keeper - OOP (Pot)",
+    "GK-OOP-C": "GK - Goalkeeper - OOP",    #"GK - Sweeper Keeper - OOP",##Cambio?
+    "GK-OOP-P": "GK - Goalkeeper - OOP (Pot)",  #"GK - Sweeper Keeper - OOP (Pot)",##Cambio?
     "FB-IP-C": "WB - Advanced Wing-Back - IP",
     "FB-IP-P": "WB - Advanced Wing-Back - IP (Pot)",
     "FB-OOP-C": "D (RL) - Full-Back - OOP",
@@ -135,12 +139,12 @@ HEADERS_DICT = {
     "DFCi-IP-P": "D (C) - Ball-Playing Centre-Back - IP (Pot)",
     "DFC-OOP-C": "D (C) - Centre-Back - OOP",
     "DFC-OOP-P": "D (C) - Centre-Back - OOP (Pot)",
-    "DM-IP-C": "M (C) - Attacking Midfielder - IP",
-    "DM-IP-P": "M (C) - Attacking Midfielder - IP (Pot)",
+    "DM-IP-C": "M (C) - Channel Midfielder - IP", #"M (C) - Attacking Midfielder - IP",##Cambio?
+    "DM-IP-P": "M (C) - Channel Midfielder - IP (Pot)", #"M (C) - Attacking Midfielder - IP (Pot)",##Cambio?
     "DM-OOP-C": "DM - Defensive Midfielder - OOP",
     "DM-OOP-P": "DM - Defensive Midfielder - OOP (Pot)",
-    "MPd-IP-C": "AM (RL) - Inside Winger - IP",
-    "MPd-IP-P": "AM (RL) - Inside Winger - IP (Pot)",
+    "MPd-IP-C":  "AM (RL) - Inside Forward - IP",   #"AM (RL) - Inside Winger - IP",##Cambio?
+    "MPd-IP-P": "AM (RL) - Inside Forward - IP (Pot)",   #"AM (RL) - Inside Winger - IP (Pot)",##Cambio?
     "MPi-IP-C": "AM (RL) - Inside Forward - IP",
     "MPi-IP-P": "AM (RL) - Inside Forward - IP (Pot)",
     "MP(RL)-OOP-C": "AM (RL) - Winger - OOP",

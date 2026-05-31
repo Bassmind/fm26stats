@@ -26,7 +26,9 @@ def actualizar_excel(jugadores_procesados):
     workbook = openpyxl.load_workbook(filename=RUTA_EXCEL_FILE)
     #sheet = workbook['At. Madrid(V2)']
     #sheet = workbook['Kochi']
-    sheet = workbook['Leon']
+    #sheet = workbook['Leon']
+    #sheet = workbook['Leon26']
+    sheet = workbook['Pachuca']
     contador_jugadores_fallados = 0
 
     for jugador in jugadores_procesados:

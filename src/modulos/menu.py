@@ -13,7 +13,7 @@ from .extraccion_datos import procesar_registro, filtrar_jugadores
 from .display_datos import persistir_info
 from .text_file import actualizar_text_file
 
-def elgir_juego():
+def elegir_juego():
     """
     Muestra el menú para elegir juego.
     """
@@ -75,7 +75,10 @@ def analizar_fm17():
     """
     Menu para FM17
     """
-    
+    print("\n[FM17-Analizando equipo propio...]\n=====================")
+    # 1. Cargar archivos
+    datos = cargar_archivo(FM="FM17")
+
 
 def analizar_talentos():
     """
@@ -121,9 +124,10 @@ def menu_principal():
     Ejecuta el bucle principal del programa.
     """
     while True:
-        elgir_juego()
+        elegir_juego()
         opcion_juego = input("Juego a elegir: ").strip()
         
+        #FM26
         if opcion_juego == "1":
             while True:
                 mostrar_menu_principal()
@@ -139,6 +143,7 @@ def menu_principal():
                     break
                 else:
                     print("\n[ERROR] Opción no válida. Intenta de nuevo.")
+        #FM17
         elif opcion_juego == "2":
             while True:
                 mostrar_menu_principal()
@@ -154,8 +159,6 @@ def menu_principal():
                     break
                 else:
                     print("\n[ERROR] Opción no válida. Intenta de nuevo.")
-            
-            
         elif opcion_juego == "0":
             print("\n¡Hasta luego!")
             break

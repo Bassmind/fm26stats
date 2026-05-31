@@ -7,6 +7,9 @@ Responsabilidades:
   * Mejores 3 posiciones, para IP y OOP
 """
 from ..config import POSICIONES, HEADERS_DICT
+from .util import obtener_logger
+
+log = obtener_logger(__name__)
 
 def procesar_registro(registro):
     """
@@ -25,6 +28,7 @@ def procesar_registro(registro):
         jugador_dict['club'] = jugador['Club']
         jugador_dict['edad'] = jugador['Age']
         #Extrar mejors posiciones actuales y potenciales y añadir al dict
+        log.info(jugador)
         extraer_mejores_posiciones(jugador, jugador_dict)
         
         datos_procesados.append(jugador_dict)
@@ -44,6 +48,8 @@ def extraer_mejores_posiciones(jugador, jugador_dict):
     """
     #Calcular promedio de cada posicion potencial
     valores_jugador_p = {}
+    
+    log.info("Checando jugador GK: {}".format(jugador['Name']))
     valores_jugador_p[POSICIONES['GK']] = calcular_valor_pos(jugador, HEADERS_DICT['GK-IP-P'], HEADERS_DICT['GK-OOP-P'])
     valores_jugador_p[POSICIONES['FB']] = calcular_valor_pos(jugador, HEADERS_DICT['FB-IP-P'], HEADERS_DICT['FB-OOP-P'])
     valores_jugador_p[POSICIONES['DFCo']] = calcular_valor_pos(jugador, HEADERS_DICT['DFCo-IP-P'], HEADERS_DICT['DFC-OOP-P'])
@@ -74,7 +80,7 @@ def calcular_valor_pos(jugador, posicionIP, posicionOOP):
     #Extraer valores y remover comillas dobles y porcentaje
     ip_p = float((jugador[posicionIP])[1:-2])
     oop_p = float((jugador[posicionOOP])[1:-2])
-
+    log.info(f"Valores para {posicionIP} y {posicionOOP} son: {ip_p} y {oop_p} respectivamente.")
     return round((ip_p + oop_p) / 2, 2)
 
 
