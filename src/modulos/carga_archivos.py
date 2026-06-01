@@ -34,8 +34,8 @@ def cargar_archivo(ruta_archivo=None):
 
     return data
 
-
 def procesar_file_info(datos_raw):
+
     """
     Reconoce las columnas del archivo y limpia las filas innecesarias.
     

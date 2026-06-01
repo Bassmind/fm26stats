@@ -9,8 +9,8 @@ Responsabilidades:
 
 import sys
 from .carga_archivos import cargar_archivo
-from .extraccion_datos import procesar_registro, filtrar_jugadores
-from .display_datos import persistir_info
+from .extraccion_datos import obtener_mejores_jugadores, procesar_registro, filtrar_jugadores
+from .display_datos import persistir_info, persistir_info_seleccion
 from .text_file import actualizar_text_file
 
 def elegir_juego():
@@ -36,6 +36,7 @@ def mostrar_menu_principal():
     print("\nSelecciona una opción:")
     print("(1) Analizar equipo propio")
     print("(2) Analizar talentos")
+    print("(3) Analizar selección")
     print("(0) Salir")
     print("-"*50)
 
@@ -113,6 +114,23 @@ def analizar_talentos():
 
     sys.exit(0)
 
+def analizar_seleccion():
+    """
+    Analizar los mejores jugadores actuales para selección nacional
+    """
+    print("\n[Analizando selección nacional...]\n=====================")
+    # 1. Cargar archivos
+    datos = cargar_archivo()
+    
+    # 2. Obtener mejores jugadores
+    jugadores_procesados = obtener_mejores_jugadores(datos)
+
+    # 3. Display de datos/crear archivo
+    persistir_info_seleccion(jugadores_procesados)
+
+    print("=====================\nAnálisis de selección completado.\n")
+
+    sys.exit(0)
 
 def analizar_talentos_fm17():
     """
@@ -137,6 +155,8 @@ def menu_principal():
                     analizar_equipo_propio()
                 elif opcion == "2":
                     analizar_talentos()
+                elif opcion == "3":
+                    analizar_seleccion()
                 elif opcion == "0":
                     print("\n¡Hasta luego!")
                     sys.exit(0)
