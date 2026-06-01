@@ -6,6 +6,8 @@ Responsabilidades:
   * Data normal
   * Mejores 3 posiciones, para IP y OOP
 """
+from src.modulos.excel import corregir_nombre
+
 from ..config import POSICIONES, HEADERS_DICT
 from .util import obtener_logger
 
@@ -231,7 +233,10 @@ def obtener_mejores_jugadores(jugadores, cantidad=10):
 
     #Obtener rating de cada jugador para cada posicion
     for jugador in jugadores:
-        jugador_info = jugador['Name'] + " - " + jugador['Club'] + " - " + jugador['Age']
+        #Invirtiendo el nombre de "Jurado, Sebastian" a "Sebastian Jurado" para mejor display y busqueda en excel
+        nombre_corregido = corregir_nombre(jugador['Name'])
+
+        jugador_info = nombre_corregido + " - " + jugador['Club']
         obtener_rating_actual(jugador, jugador_info, jugadores_por_posicion)
 
     #Obtener los mejores X jugadores para cada posicion
