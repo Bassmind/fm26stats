@@ -38,7 +38,7 @@ def procesar_registro(registro):
 
 def obtener_rating_actual(jugador, jugador_info, jugadores_por_posicion):
     """
-    Obtiene el rating actual del jugador para cada posicion potencial y lo agrega al diccionario de jugadores total
+    Obtiene el rating actual del jugador para cada posicion y lo agrega al diccionario de jugadores total
     
     Args:
         jugador (dict): Datos del jugador.
@@ -64,6 +64,35 @@ def obtener_rating_actual(jugador, jugador_info, jugadores_por_posicion):
     jugadores_por_posicion[POSICIONES['MPd']].append((jugador_info, valor_actual_MPd))
     #jugadores_por_posicion[POSICIONES['MPi']].append((jugador_info, valor_actual_MPi))
     jugadores_por_posicion[POSICIONES['MPc']].append((jugador_info, valor_actual_MPc))
+
+def obtener_rating_potencial(jugador, jugador_info, jugadores_por_posicion):
+    """
+    Obtiene el rating potencial del jugador para cada posicion potencial y lo agrega al diccionario de jugadores total
+    
+    Args:
+        jugador (dict): Datos del jugador.
+        
+    Returns:
+        object: jugadores_por_posicion actualizado.
+    """
+
+    valor_potencial_GK = calcular_valor_pos(jugador, HEADERS_DICT['GK-IP-P'], HEADERS_DICT['GK-OOP-P'])
+    valor_potencial_FB = calcular_valor_pos(jugador, HEADERS_DICT['FB-IP-P'], HEADERS_DICT['FB-OOP-P'])
+    valor_potencial_DFCo = calcular_valor_pos(jugador, HEADERS_DICT['DFCo-IP-P'], HEADERS_DICT['DFC-OOP-P'])
+    valor_potencial_DFCi = calcular_valor_pos(jugador, HEADERS_DICT['DFCi-IP-P'], HEADERS_DICT['DFC-OOP-P'])
+    valor_potencial_DM = calcular_valor_pos(jugador, HEADERS_DICT['DM-IP-P'], HEADERS_DICT['DM-OOP-P'])
+    valor_potencial_MPd = calcular_valor_pos(jugador, HEADERS_DICT['MPd-IP-P'], HEADERS_DICT['MP(RL)-OOP-P'])
+    #valor_potencial_MPi = calcular_valor_pos(jugador, HEADERS_DICT['MPi-IP-P'], HEADERS_DICT['MP(RL)-OOP-P'])
+    valor_potencial_MPc = calcular_valor_pos(jugador, HEADERS_DICT['MPc-IP-P'], HEADERS_DICT['MPc-OOP-P'])
+
+    jugadores_por_posicion[POSICIONES['GK']].append((jugador_info, valor_potencial_GK))
+    jugadores_por_posicion[POSICIONES['FB']].append((jugador_info, valor_potencial_FB))
+    jugadores_por_posicion[POSICIONES['DFCo']].append((jugador_info, valor_potencial_DFCo))
+    jugadores_por_posicion[POSICIONES['DFCi']].append((jugador_info, valor_potencial_DFCi))
+    jugadores_por_posicion[POSICIONES['DM']].append((jugador_info, valor_potencial_DM))
+    jugadores_por_posicion[POSICIONES['MPd']].append((jugador_info, valor_potencial_MPd))
+    #jugadores_por_posicion[POSICIONES['MPi']].append((jugador_info, valor_potencial_MPi))
+    jugadores_por_posicion[POSICIONES['MPc']].append((jugador_info, valor_potencial_MPc))
 
 
 def extraer_mejores_posiciones(jugador, jugador_dict):
@@ -242,6 +271,36 @@ def obtener_mejores_jugadores(jugadores, cantidad=10):
     #Obtener los mejores X jugadores para cada posicion
     mejores_jugadores_por_posicion = {}
     for pos, jugadores_list in jugadores_por_posicion.items():
-        mejores_jugadores_por_posicion[pos] = sorted(jugadores_list, key=lambda x: x[1], reverse=True)[:10]
+        mejores_jugadores_por_posicion[pos] = sorted(jugadores_list, key=lambda x: x[1], reverse=True)[:15]
+    
+    return mejores_jugadores_por_posicion
+
+def obtener_mejores_jugadores_potenciales(jugadores, cantidad=10):
+    """
+    Obtiene los mejores jugadores potenciales para cada posición.
+    
+    Args:
+        jugadores (list): Lista de jugadores procesados.
+        cantidad (int): Número de mejores jugadores a obtener.
+        
+    Returns:
+        list: Lista de los mejores jugadores.
+    """
+    
+    #Create object from POSICIONES with key as position and value as list of jugadores with that position as best_pos_pot
+    jugadores_por_posicion = {pos: [] for pos in POSICIONES.values()}
+
+    #Obtener rating de cada jugador para cada posicion
+    for jugador in jugadores:
+        #Invirtiendo el nombre de "Jurado, Sebastian" a "Sebastian Jurado" para mejor display y busqueda en excel
+        nombre_corregido = corregir_nombre(jugador['Name'])
+
+        jugador_info = nombre_corregido + " - " + jugador['Club']
+        obtener_rating_potencial(jugador, jugador_info, jugadores_por_posicion)
+
+    #Obtener los mejores X jugadores para cada posicion
+    mejores_jugadores_por_posicion = {}
+    for pos, jugadores_list in jugadores_por_posicion.items():
+        mejores_jugadores_por_posicion[pos] = sorted(jugadores_list, key=lambda x: x[1], reverse=True)[:20]#Cambiar :20 al numero deseado
     
     return mejores_jugadores_por_posicion
